@@ -1,6 +1,7 @@
+$padding: 10px;
+$gap: 1px;
 $day-size: 100px;
 $day-border: 1px;
-$margin: 1px;
 $day-bg: #eee;
 $day-hover-bg: #ffbfcb;
 $day-font: Arial, sans-serif;
@@ -17,18 +18,22 @@ $days: (
   sun: 6,
 );
 
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .calendar {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  margin: $margin;
-  width: calc(7 * ($day-size + $margin) + $margin);
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: $padding;
+  gap: $gap;
+  width: calc(7 * $day-size + 6 * $gap);
 }
 
 .calendar__day {
@@ -36,8 +41,6 @@ $days: (
   width: $day-size;
   height: $day-size;
   background: $day-bg;
-  margin-right: $margin;
-  margin-bottom: $margin;
   border: $day-border solid #000;
   display: flex;
   align-items: center;
@@ -67,7 +70,7 @@ $days: (
 
 @each $day, $offset in $days {
   .calendar--start-day-#{$day} .calendar__day:first-child {
-    margin-left: calc(#{$offset} * ($day-size + $margin));
+    margin-left: calc(#{$offset} * ($day-size + $gap));
   }
 }
 
