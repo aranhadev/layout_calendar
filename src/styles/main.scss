@@ -45,9 +45,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: $day-font;
-  font-size: $day-font-size;
-  color: #000;
   position: relative;
   transition:
     background $transition,
@@ -62,8 +59,11 @@ body {
 
 @for $i from 1 through 31 {
   .calendar__day:nth-child(#{$i}) {
-    &::after {
+    &::before {
       content: '#{$i}';
+      font-family: $day-font;
+      font-size: $day-font-size;
+      color: #000;
     }
   }
 }
@@ -74,7 +74,7 @@ body {
   }
 }
 
-@for $i from 28 through 30 {
+@for $i from 28 through 31 {
   .calendar--month-length-#{$i} .calendar__day:nth-child(n + #{$i + 1}) {
     display: none;
   }
